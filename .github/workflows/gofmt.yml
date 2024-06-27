@@ -7,6 +7,8 @@ on:
 
 jobs:
   gofmt:
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
 
     steps:
@@ -28,4 +30,3 @@ jobs:
           git commit -m "Apply gofmt changes"
           git push origin main
         fi
-
