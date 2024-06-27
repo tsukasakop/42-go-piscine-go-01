@@ -3,7 +3,7 @@ name: Go Format Check
 on:
   push:
     branches:
-      - main
+      - go
 
 jobs:
   gofmt:
