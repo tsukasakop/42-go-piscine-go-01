@@ -3,7 +3,7 @@ name: Go Format Check
 on:
   push:
     branches:
-      - go
+      - main
 
 jobs:
   gofmt:
@@ -20,14 +20,12 @@ jobs:
 
     - name: Run gofmt
       run: |
-        gofmt -w .
-        git diff --exit-code
+        gofmt -l -w .
+        if [ -n "$(git status --porcelain)" ]; then
+          git config --global user.name 'github-actions'
+          git config --global user.email 'github-actions@github.com'
+          git add .
+          git commit -m "Apply gofmt changes"
+          git push origin main
+        fi
 
-    - name: Commit changes
-      if: success() && (steps.gofmt.outputs.changes == 'true')
-      run: |
-        git config --global user.name 'github-actions'
-        git config --global user.email 'github-actions@github.com'
-        git add .
-        git commit -m "Apply gofmt changes"
-        git push origin main
