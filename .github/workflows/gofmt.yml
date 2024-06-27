@@ -28,5 +28,5 @@ jobs:
           git config --global user.email 'github-actions@github.com'
           git add .
           git commit -m "Apply gofmt changes"
-          git push origin main
+          git push origin go
         fi
