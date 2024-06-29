@@ -19,4 +19,3 @@ func Atoi(s string) int {
 	}
 	return sign * nb
 }
-
