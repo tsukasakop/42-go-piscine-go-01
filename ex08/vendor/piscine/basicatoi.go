@@ -2,14 +2,10 @@ package piscine
 
 func BasicAtoi(s string) int {
 	str := []rune(s)
-	nb := 1
-	l := 0
-	for range s {
-		l++
-	}
-	for i:=0; i<l; i++ {
-		nb *= int(str[i] - '0')
+	nb := 0
+	for _, c := range str {
 		nb *= 10
+		nb += int(c - '0')
 	}
 	return nb
 }
